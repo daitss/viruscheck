@@ -1,1 +1,4 @@
 *.swp
+log
+tmp
+.bundle
