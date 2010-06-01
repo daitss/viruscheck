@@ -1,21 +1,20 @@
+require 'webrat'
 require 'rack/test'
-require 'spec'
-require 'sinatra'
-require 'daitss/config'
 require 'libxml'
-require 'xmlns'
 
-raise "CONFIG not set" unless ENV['CONFIG']
-Daitss::CONFIG.load ENV['CONFIG']
-
-Spec::Runner.configure do |conf|
-  conf.include Rack::Test::Methods
-end
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 set :environment, :test
 
-def app
-  VirusCheckService::App
+Spec::Runner.configure do |config|
+  config.include Rack::Test::Methods
+  config.include Webrat::Methods
+  config.include Webrat::Matchers
+
+  def app
+    Sinatra::Application
+  end
+
 end
 
 Spec::Matchers.define :have_event do |options|
@@ -24,7 +23,7 @@ Spec::Matchers.define :have_event do |options|
     doc = LibXML::XML::Document.string res.body
     xpath = %Q{//P:event[ P:eventType = '#{options[:type]}' and
                           P:eventOutcomeInformation/P:eventOutcome = '#{options[:outcome]}' ]}
-                          doc.find_first xpath, NS_PREFIX
+                          doc.find_first xpath, 'P' => 'info:lc/xmlns/premis-v2'
   end
 
   failure_message_for_should do |res|

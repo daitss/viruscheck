@@ -1,30 +1,40 @@
 #!/usr/bin/env ruby
 
 require 'sinatra'
-require 'virus'
-require 'daitss/config'
+require 'uuid'
 
-# if we want to rack multiple sinatras up we need to have them separate
-module VirusCheckService
+# TODO have index form for individual use
+# TODO support clamdscan
+# TODO investigate http://github.com/eagleas/clamav
 
-  class App < Sinatra::Base
-    set :root, File.dirname(__FILE__)
-
-    post '/' do
-      Daitss::CONFIG.load ENV['CONFIG']
-
-      # return 400 if there is no body in the request
-      error 400, "Missing Data" unless params['data']
-
-      tf = Tempfile.new 'vc'
-      tf.write params['data']
-      tf.flush
-      @path = tf.path
-      erb :results
-    end
-
-  end
-
+configure do
+  output = %x{clamscan --version 2>&1}
+  raise "clamscan not found" unless output.lines.first =~ /ClamAV/
 end
 
-VirusCheckService:App.run! if __FILE__ == $0
+post '/' do
+
+  # check the parameters
+  error 400, "Missing Data" unless params['data']
+
+  # write to a tempfile
+  tf = Tempfile.new 'vc'
+  tf.write params['data']
+  tf.flush
+
+  # virus scan it
+  @output = %x{clamscan #{tf.path} 2>&1}
+  tf.close!
+
+  # check its status
+  @infected = case $?.exitstatus
+              when 0 then false
+              when 1 then true
+              else raise "problem with virus checker: #{$?.exitstatus}"
+              end
+
+  # make an event id
+  @event_id = UUID.generate :urn
+
+  erb :results
+end

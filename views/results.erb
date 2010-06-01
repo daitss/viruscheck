@@ -1,7 +1,40 @@
 <?xml version = "1.0" encoding="UTF-8"?>
 <premis xmlns="info:lc/xmlns/premis-v2">
 
- <%= erb :virus_check, :layout => false %>
- <%= erb :agent, :layout => false %>
+  <event>
+    <eventIdentifier>
+      <eventIdentifierType>URI</eventIdentifierType>
+      <eventIdentifierValue><%= @event_id %></eventIdentifierValue>
+    </eventIdentifier>
+    <eventType>virus check</eventType>
+    <eventDateTime><%= Time.now.xmlschema %></eventDateTime>
+    <eventOutcomeInformation>
+      <eventOutcome><%=  @infected ? 'failed' : 'passed' %></eventOutcome>
+      <% if @infected %>
+      <eventOutcomeDetail>
+        <eventOutcomeDetailNote>
+          Output from virus scanner: <%= @output %>
+        </eventOutcomeDetailNote>
+      </eventOutcomeDetail>
+      <% end %>
+    </eventOutcomeInformation>
+    <linkingAgentIdentifier>
+      <linkingAgentIdentifierType>URI</linkingAgentIdentifierType>
+      <linkingAgentIdentifierValue>info:fcla/archive/service/viruscheck</linkingAgentIdentifierValue>
+    </linkingAgentIdentifier>
+    <linkingObjectIdentifier>
+      <linkingObjectIdentifierType>URI</linkingObjectIdentifierType>
+      <linkingObjectIdentifierValue><%= @event_id %></linkingObjectIdentifierValue>
+    </linkingObjectIdentifier>
+  </event>
+
+  <agent>
+    <agentIdentifier>
+      <agentIdentifierType>URI</agentIdentifierType>
+      <agentIdentifierValue>info:fcla/archive/service/viruscheck</agentIdentifierValue>
+    </agentIdentifier>
+    <agentName>daitss virus check service</agentName>
+    <agentType>web service</agentType>
+  </agent>
 
 </premis>
