@@ -1,8 +1,11 @@
+require "rubygems"
+require "bundler"
+Bundler.setup :default, :test
+
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'webrat'
 require 'rack/test'
 require 'libxml'
-
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 set :environment, :test
 
