@@ -1,67 +1,44 @@
---- 
-dependencies: 
-  libxml-ruby: 
-    group: 
-    - :test
-    version: ~> 1.1
-    require: 
-    - libxml
-  uuid: 
-    group: 
-    - :default
-    version: ~> 2.3
-  rspec: 
-    group: 
-    - :test
-    version: ~> 1.3
-    require: 
-    - spec
-  thin: 
-    group: 
-    - :test
-    version: ~> 1.2
-    require: 
-    - rack/test
-  webrat: 
-    group: 
-    - :test
-    version: ~> 0.7
-  sinatra: 
-    group: 
-    - :default
-    version: ~> 1.0
-  rack-test: 
-    group: 
-    - :test
-    version: ~> 0.5
-    require: 
-    - rack/test
-specs: 
-- daemons: 
-    version: 1.0.10
-- eventmachine: 
-    version: 0.12.10
-- libxml-ruby: 
-    version: 1.1.4
-- macaddr: 
-    version: 1.0.0
-- nokogiri: 
-    version: 1.4.2
-- rack: 
-    version: 1.1.0
-- rack-test: 
-    version: 0.5.4
-- rspec: 
-    version: 1.3.0
-- sinatra: 
-    version: "1.0"
-- thin: 
-    version: 1.2.7
-- uuid: 
-    version: 2.3.1
-- webrat: 
-    version: 0.7.1
-hash: e11edf4ea04be33b7a9394e44e6e30630ec500d9
-sources: 
-- Rubygems: 
-    uri: http://rubygems.org
+GEM
+  remote: http://rubygems.org/
+  specs:
+    columnize (0.3.1)
+    daemons (1.1.0)
+    eventmachine (0.12.10)
+    libxml-ruby (1.1.4)
+    linecache (0.43)
+    macaddr (1.0.0)
+    nokogiri (1.4.3.1)
+    rack (1.2.1)
+    rack-test (0.5.4)
+      rack (>= 1.0)
+    rspec (1.3.0)
+    ruby-debug (0.10.3)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.3.0)
+    ruby-debug-base (0.10.3)
+      linecache (>= 0.3)
+    sinatra (1.0)
+      rack (>= 1.0)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    uuid (2.3.1)
+      macaddr (~> 1.0)
+    webrat (0.7.1)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  libxml-ruby (~> 1.1)
+  rack-test (~> 0.5)
+  rspec (~> 1.3)
+  ruby-debug
+  sinatra (~> 1.0)
+  thin (~> 1.2)
+  uuid (~> 2.3)
+  webrat (~> 0.7)

@@ -8,5 +8,6 @@ group :test do
   gem "webrat", "~>0.7"
   gem "rack-test", "~>0.5", :require => 'rack/test'
   gem "thin", "~>1.2", :require => 'rack/test'
+  gem "ruby-debug"
 end
 

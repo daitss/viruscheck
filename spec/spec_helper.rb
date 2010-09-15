@@ -7,6 +7,8 @@ require 'webrat'
 require 'rack/test'
 require 'libxml'
 
+Webrat.configure { |config| config.mode = :rack }
+
 set :environment, :test
 
 Spec::Runner.configure do |config|

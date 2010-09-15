@@ -6,7 +6,7 @@ require 'app'
 
 set :env, :production
 
-enable :clamd
+#enable :clamd
 
 disable :run, :reload
 
