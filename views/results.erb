@@ -9,7 +9,7 @@
     <eventType>virus check</eventType>
     <eventDateTime><%= Time.now.xmlschema %></eventDateTime>
     <eventOutcomeInformation>
-      <eventOutcome><%=  @infected ? 'failed' : 'passed' %></eventOutcome>
+      <eventOutcome><%=  @infected ? 'failure' : 'success' %></eventOutcome>
       <% if @infected %>
       <eventOutcomeDetail>
         <eventOutcomeDetailNote>
