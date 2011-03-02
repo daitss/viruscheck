@@ -6,7 +6,7 @@ describe 'virus check service' do
     visit '/'
     attach_file 'data', File.join(File.dirname(__FILE__), 'files/ateam.tiff')
     click_button 'check'
-    last_response.should have_event(:type => "virus check", :outcome => "passed")
+    last_response.should have_event(:type => "virus check", :outcome => "success")
   end
 
   it "should return failed virus check event for infected file" do
@@ -14,7 +14,7 @@ describe 'virus check service' do
     attach_file 'data', File.join(File.dirname(__FILE__), 'files/eicar.com')
     click_button 'check'
     last_response.should be_ok
-    last_response.should have_event(:type => "virus check", :outcome => "failed")
+    last_response.should have_event(:type => "virus check", :outcome => "failure")
   end
 
   it "should return 400 if data is missing" do
