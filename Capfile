@@ -19,7 +19,6 @@ set :use_sudo,     false
 set :user,         "daitss"
 set :group,        "daitss" 
 
-#set :bundle_flags,       "--deployment"   # --quiet is one of the defaults, we explicitly set it to remove --deployment
 set :bundle_without,      []
 
 def usage(*messages)
@@ -45,8 +44,6 @@ if (variables[:who] and variables[:who] =~ %r{.*:.*})
 end
 
 role :app, domain
-
-# after "deploy:update", "deploy:layout", "deploy:doc", "deploy:restart"
 
 after "deploy:update", "deploy:layout", "deploy:restart"
 
