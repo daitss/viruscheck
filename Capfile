@@ -11,7 +11,7 @@ require 'rubygems'
 require 'railsless-deploy'
 require 'bundler/capistrano'
 
-set :repository,   "http://github.com/daitss/viruscheck.git"
+set :repository,   "git://github.com/daitss/viruscheck.git"
 set :scm,          "git"
 set :branch,       "master"
 
