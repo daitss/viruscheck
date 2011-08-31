@@ -63,3 +63,8 @@ post '/' do
 
   erb :results
 end
+
+get '/status' do
+  [ 200, {'Content-Type'  => 'application/xml'}, "<status/>\n" ]
+end
+
