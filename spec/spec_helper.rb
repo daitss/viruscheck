@@ -11,7 +11,7 @@ Webrat.configure { |config| config.mode = :rack }
 
 set :environment, :test
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Webrat::Methods
   config.include Webrat::Matchers
@@ -22,7 +22,7 @@ Spec::Runner.configure do |config|
 
 end
 
-Spec::Matchers.define :have_event do |options|
+RSpec::Matchers.define :have_event do |options|
 
   match do |res|
     doc = LibXML::XML::Document.string res.body
