@@ -20,6 +20,7 @@ defaults:
 
 viruscheck.example.org:
     log_syslog_facility:         LOG_LOCAL0
+    log_filename:                viruscheck.log
     clamd:                       false
 
 # defaults:temp_directory
