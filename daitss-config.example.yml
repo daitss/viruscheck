@@ -11,6 +11,13 @@
 defaults:
      temp_directory:             /var/tmp
 
+# We normally name sections after the virtual hostname used by an
+# applcation (this is so one physical host can run multiple services
+# of the same kind).  An application's configuration code typically
+# checks the VIRTUAL_HOSTNAME environment variable to determine the
+# appropriate section to load.  Typically VIRTUAL_HOSTNAME is set in
+# the same place that the DAITTS_CONFIG environment is set.
+
 viruscheck.example.org:
     log_syslog_facility:         LOG_LOCAL0
     clamd:                       false
@@ -21,17 +28,18 @@ viruscheck.example.org:
 # twice the size of the largest package you plan to ingest, plus
 # headroom.  Defaults to system-defined temp directory (typically
 # /tmp/)
-#
+
 # viruscheck:log_syslog_facility
 # -------------------------------
 # If set, direct log information to this syslog facility (see
-# /etc/syslog.conf), otherwise log to STDERR.
+# /etc/syslog.conf). If neither log_filename nor log_syslog_facility
+# are set, log to STDERR.
 #
-# viruscheck:virtual_hostname
-# ----------------------------
-# What hostname are we running the service under?  This is used as a
-# tag in the logs. Defaults to the hostname of the server
-#
+# viruscheck:log_filename
+# -------------------------------
+# If set, direct log information to this file. If neither log_filename
+# nor log_syslog_facility are set, log to STDERR.
+##
 # viruscheck:clamd
 # --------------------------
 # Set this to true if clamd is installed and you wish to use it
