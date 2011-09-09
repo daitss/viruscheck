@@ -27,7 +27,7 @@ end
 configure do |s|
   config = get_config
 
-  ENV['TMPDIR'] = config.temp_directory if config.temp_directory
+  ENV['TMPDIR'] = config.temp_directory
 
   disable :logging        # Stop CommonLogger from logging to STDERR; we'll set it up ourselves.
 
