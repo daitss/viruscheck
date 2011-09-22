@@ -47,6 +47,7 @@ configure do |s|
   Logger.filename = config.log_filename if config.log_filename
 
   Logger.info "Starting up viruscheck service"
+  Logger.info "Using temp directory #{ENV['TMPDIR']}"
 
   use Rack::CommonLogger, Logger.new(:info, 'Rack:')
 end #of configure
