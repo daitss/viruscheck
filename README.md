@@ -1,7 +1,7 @@
 Viruscheck Service
 ==========================
 
-Viruscheck service is a stand-alone Sinatra applicatioa. It:
+Viruscheck service is a stand-alone Sinatra application. It:
 
 * accepts a POST request containing data, 
 * Runs a virus scan on that data,
