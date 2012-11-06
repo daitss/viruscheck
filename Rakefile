@@ -34,9 +34,9 @@ task :retsina do
     sh "cap deploy -S target=retsina.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
 end
 
-desc "deploy to development site (transform.marsala.fcla.edu)"
+desc "deploy to development site (viruscheck.marsala.fcla.edu)"
 task :marsala do
-	            sh "cap deploy -S target=marsala.fcla.edu:/opt/web-services/sites/transform -S who=#{user}:#{user}"
+	            sh "cap deploy -S target=marsala.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
 end
 
 desc "deploy to ripple's test site (viruscheck.ripple.fcla.edu)"
