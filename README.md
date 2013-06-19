@@ -7,6 +7,10 @@ Viruscheck service is a stand-alone Sinatra application. It:
 * Runs a virus scan on that data,
 * Returns a PREMIS XML document describing the result of the scan.
  
+Current Production code
+-----------------------
+git commit sha1 -  c05806d1f973b07509f248d0c5c4a4404ba38765
+
 Requirements
 ------------
 * ruby (tested on 1.8.6 and 1.8.7)
