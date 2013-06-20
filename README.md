@@ -9,7 +9,7 @@ Viruscheck service is a stand-alone Sinatra application. It:
  
 Current Production code
 -----------------------
-git commit sha1 -  c05806d1f973b07509f248d0c5c4a4404ba38765
+* https://github.com/daitss/viruscheck/tree/c05806d1f973b07509f248d0c5c4a4404ba38765
 
 Requirements
 ------------
