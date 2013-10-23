@@ -11,6 +11,6 @@ group :test do
   gem "webrat"
   gem "rack-test"
   gem "thin"
-  gem "ruby-debug"
+  gem "debugger"
 end
 
