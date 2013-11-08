@@ -37,19 +37,19 @@ configure do |s|
   
   set :clamd, config.clamd
 
-  Logger.setup('VirusCheck', ENV['VIRTUAL_HOSTNAME'])
+  Datyl::Logger.setup('VirusCheck', ENV['VIRTUAL_HOSTNAME'])
 
   if not (config.log_syslog_facility or config.log_filename)
-    Logger.stderr # log to STDERR
+    Datyl::Logger.stderr # log to STDERR
   end
 
-  Logger.facility = config.log_syslog_facility if config.log_syslog_facility
-  Logger.filename = config.log_filename if config.log_filename
+  Datyl::Logger.facility = config.log_syslog_facility if config.log_syslog_facility
+  Datyl::Logger.filename = config.log_filename if config.log_filename
 
-  Logger.info "Starting up viruscheck service"
-  Logger.info "Using temp directory #{ENV['TMPDIR']}"
+  Datyl::Logger.info "Starting up viruscheck service"
+  Datyl::Logger.info "Using temp directory #{ENV['TMPDIR']}"
 
-  use Rack::CommonLogger, Logger.new(:info, 'Rack:')
+  use Rack::CommonLogger, Datyl::Logger.new(:info, 'Rack:')
 end #of configure
 
 helpers do
@@ -88,8 +88,8 @@ error do
 
   request.body.rewind if request.body.respond_to?('rewind') # work around for verbose passenger warning
 
-  Logger.err "Caught exception #{e.class}: '#{e.message}'; backtrace follows", @env
-  e.backtrace.each { |line| Logger.err line, @env }
+  Datyl::Logger.err "Caught exception #{e.class}: '#{e.message}'; backtrace follows", @env
+  e.backtrace.each { |line| Datyl::Logger.err line, @env }
 
   halt 500, { 'Content-Type' => 'text/plain' }, e.message + "\n"
 end 
