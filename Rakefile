@@ -41,7 +41,7 @@ end
 
 desc "deploy to ripple's test site (viruscheck.ripple.fcla.edu)"
 task :ripple do
-    sh "cap deploy -S target=ripple.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
+    sh "cap deploy -S target=ripple.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user} branch=ruby1.9.3"
 end
 
 desc "deploy to tarchive's coop (viruscheck.tarchive.fcla.edu?)"
