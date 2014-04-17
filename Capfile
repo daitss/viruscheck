@@ -41,7 +41,7 @@ set :domain,     _domain
 
 set :default_environment, { 
   'PATH' => "/opt/ruby-1.9.3-p545/bin:$PATH",
-  'RUBY_VERSION' => 'ruby 1.9.3',
+  'RUBY_VERSION' => 'ruby 1.9.3-p545'
 }
 
 if (variables[:who] and variables[:who] =~ %r{.*:.*})
