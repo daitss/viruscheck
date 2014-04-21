@@ -26,27 +26,27 @@ end
 
 desc "deploy to darchive's production site (viruscheck.fda.fcla.edu)"
 task :darchive do
-    sh "cap deploy -S target=darchive.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
+  sh "cap deploy -S target=darchive.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
 end
 
 desc "deploy to development site (viruscheck.retsina.fcla.edu)"
 task :retsina do
-    sh "cap deploy -S target=retsina.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
+  sh "cap deploy -S target=retsina.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
 end
 
 desc "deploy to development site (viruscheck.marsala.fcla.edu)"
 task :marsala do
-	            sh "cap deploy -S target=marsala.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
+  sh "cap deploy -S target=marsala.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user}"
 end
 
 desc "deploy to ripple's test site (viruscheck.ripple.fcla.edu)"
 task :ripple do
-    sh "cap deploy -S target=ripple.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user} branch=ruby1.9.3"
+  sh "cap deploy -S target=ripple.fcla.edu:/opt/web-services/sites/viruscheck -S who=#{user}:#{user} branch=ruby1.9.3"
 end
 
 desc "deploy to tarchive's coop (viruscheck.tarchive.fcla.edu?)"
 task :tarchive_coop do
-    sh "cap deploy -S target=tarchive.fcla.edu:/opt/web-services/sites/coop/viruscheck -S who=#{user}:#{user}"
+  sh "cap deploy -S target=tarchive.fcla.edu:/opt/web-services/sites/coop/viruscheck -S who=#{user}:#{user}"
 end
 
 defaults = [:restart]
