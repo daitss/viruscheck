@@ -15,7 +15,10 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Webrat::Methods
   config.include Webrat::Matchers
-
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+  
   def app
     Sinatra::Application
   end
@@ -31,11 +34,11 @@ RSpec::Matchers.define :have_event do |options|
                           doc.find_first xpath, 'P' => 'info:lc/xmlns/premis-v2'
   end
 
-  failure_message_for_should do |res|
+  failure_message do |res|
     "expected response to have a premis event: #{options.inspect}"
   end
 
-  failure_message_for_should_not do |res|
+  failure_message_when_negated do |res|
     "expected response to not have a premis event: #{options.inspect}"
   end
 
