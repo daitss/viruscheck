@@ -28,7 +28,7 @@ RSpec::Matchers.define :have_event do |options|
     doc = LibXML::XML::Document.string res.body
     xpath = %Q{//P:event[ P:eventType = '#{options[:type]}' and
                           P:eventOutcomeInformation/P:eventOutcome = '#{options[:outcome]}' ]}
-                          doc.find_first xpath, 'P' => 'info:lc/xmlns/premis-v2'
+                          doc.find_first xpath, 'P' => 'http://www.loc.gov/premis/v3'
   end
 
   failure_message_for_should do |res|
