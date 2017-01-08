@@ -55,7 +55,8 @@ end #of configure
 helpers do
 
   def clambin
-    settings.clamd ? 'clamdscan' : 'clamscan'
+#    settings.clamd ? 'clamdscan' : 'clamscan'
+     settings.clamd ? 'clamdscan' : '/bin/true'
   end
 
   def clamscan data
